@@ -15,7 +15,7 @@ $password = $_GET['password'];
 $usernameQ = $pdo->quote($username);
 
 $query = <<<QUERY
-SELECT count(*) as count FROM stacker_user WHERE user = $usernameQ
+SELECT count(*) as count FROM stacker_user WHERE username = $usernameQ
 QUERY;
 
 $rows = $pdo->query($query);
@@ -25,7 +25,7 @@ $row = $rows->fetch();
 if($row['count'] == 1)
 {
 	$query = <<<QUERY
-	SELECT password FROM stacker_user WHERE user = $usernameQ
+	SELECT password FROM stacker_user WHERE username = $usernameQ
 QUERY;
 	$rows = $pdo->query($query);
 	$row = $rows->fetch();
